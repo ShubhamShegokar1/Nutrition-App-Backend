@@ -1,4 +1,5 @@
 package com.Nutrition.NutritionApp.Twillio;
+import com.Nutrition.NutritionApp.Entity.OTPCheck;
 import com.Nutrition.NutritionApp.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,8 +17,7 @@ public class SmsController {
     }
 
     @PostMapping
-    @RequestMapping("login")
-    public void sendSms(@Valid @RequestBody User user) {
-        smsService.sendSms(user);
+    public void sendSms(@Valid @RequestBody SmsRequest smsRequest, OTPCheck otpCheck) {
+        smsService.sendSms(smsRequest,otpCheck);
     }
 }

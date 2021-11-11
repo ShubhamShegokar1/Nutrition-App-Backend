@@ -1,6 +1,7 @@
 package com.Nutrition.NutritionApp.Service;
 import com.Nutrition.NutritionApp.Entity.User;
 import com.Nutrition.NutritionApp.Repository.UserRepository;
+import com.Nutrition.NutritionApp.Twillio.SmsRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,20 +11,14 @@ import java.util.List;
 public class UserService {
     @Autowired
     UserRepository userRepository;
-    public String addSignup(User signUp)
+    public String addSignup(SmsRequest user)
     {
-        String mobile=signUp.getPhoneNumber();
-        String name=signUp.getName();
-        if(name.isEmpty()) {
-            return "Please enter name";
-        }
         List<User> list= userRepository.findAll();
         for(User s:list) {
-            if(s.getPhoneNumber() == mobile ) {
+            if(s.getPhoneNumber() ==  user.getPhoneNumber() ) {
                 return "Mobile already exit";
             }
         }
-        userRepository.save(signUp);
      return "Done";
     }
 
