@@ -8,10 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Service("twilio")
@@ -42,7 +38,7 @@ import java.util.Date;
             otpCheck.setMobile(mobile);
            // SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             Date date = new Date();
-            otpCheck.setTimeStame(date);
+            otpCheck.setTimeStamp(date);
             otpRespository.save(otpCheck);
             MessageCreator creator = Message.creator(to, from, message);
             creator.create();

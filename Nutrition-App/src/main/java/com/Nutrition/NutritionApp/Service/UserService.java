@@ -15,7 +15,7 @@ public class UserService {
     {
         List<User> list= userRepository.findAll();
         for(User s:list) {
-            if(s.getPhoneNumber() ==  user.getPhoneNumber() ) {
+            if(s.getPhoneNumber() ==  user.getPhoneNumber()) {
                 return "Mobile already exit";
             }
         }

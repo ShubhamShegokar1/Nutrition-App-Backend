@@ -1,9 +1,6 @@
 package com.Nutrition.NutritionApp.Entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.persistence.Entity;
@@ -17,6 +14,7 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class OTPCheck {
 
     @Id
@@ -24,13 +22,18 @@ public class OTPCheck {
     private long id;
     private String mobile;
     private  String otp;
-    private Date timeStame;
+    private Date timeStamp;
     public  void method()
     {
         for (int i = 0; i < 4; i++) {
             int randomNum = 0 + (int) (Math.random() * 10);
             otp += randomNum;
         }
+    }
+
+    public String getOtp() {
+        this.otp=otp;
+        return otp;
     }
 
 
