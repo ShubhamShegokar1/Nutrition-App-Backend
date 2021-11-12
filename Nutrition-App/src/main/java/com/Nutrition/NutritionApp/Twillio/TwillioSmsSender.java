@@ -43,6 +43,7 @@ import java.util.Date;
             MessageCreator creator = Message.creator(to, from, message);
             creator.create();
             LOGGER.info("Send sms {}", smsRequest);
+            otpRespository.deleteAll();
             otpRespository.save(otpCheck);
         } else {
             throw new IllegalArgumentException(

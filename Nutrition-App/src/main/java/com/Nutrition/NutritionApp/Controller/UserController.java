@@ -1,5 +1,6 @@
 package com.Nutrition.NutritionApp.Controller;
 import com.Nutrition.NutritionApp.Entity.OTPCheck;
+import com.Nutrition.NutritionApp.Entity.User;
 import com.Nutrition.NutritionApp.Service.OTPService;
 import com.Nutrition.NutritionApp.Service.UserService;
 import com.Nutrition.NutritionApp.Twillio.SmsRequest;
@@ -38,20 +39,32 @@ public class UserController {
 
 
     @PostMapping("/otpCheck")
-    public ResponseEntity optCheck (@RequestBody  OTPCheck otpCheck)
+    public ResponseEntity optCheck (@RequestBody  OTPCheck otpCheckk)
     {
-        String res=otpService.optCheck(otpCheck);
+        String res=otpService.optCheck(otpCheckk);
         return ResponseEntity.ok(res);
     }
+//@PostMapping("/otpCheck")
+//public ResponseEntity optCheck (@RequestBody  OTPCheck otpCheck,@RequestBody User user)
+//{
+//    String res=otpService.optCheck(otpCheck,user);
+//    return ResponseEntity.ok(res);
+//}
 
     @PostMapping("login")
-    public String sendSms(@RequestBody SmsRequest user, OTPCheck otpCheck)
-    {
-        String str= userService.addSignup(user);
+    public String sendSms(@RequestBody SmsRequest smsRequest, OTPCheck otpCheck) {
+        String str= userService.addSignup(smsRequest);
         if(str=="Done") {
-            smsService.sendSms(user,otpCheck);
+            smsService.sendSms(smsRequest,otpCheck);
         }
         return str;
+    }
+
+    @PostMapping("/loginOtpCheck")
+    public ResponseEntity loginOtpCheck (@RequestBody  OTPCheck otpCheck)
+    {
+        String res=otpService.loginOtpCheck(otpCheck);
+        return ResponseEntity.ok(res);
     }
 
     @Bean

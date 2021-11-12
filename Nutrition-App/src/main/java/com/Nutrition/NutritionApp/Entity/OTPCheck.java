@@ -21,7 +21,8 @@ public class OTPCheck {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String mobile;
-    private  String otp;
+    private String Name;
+    private String otp;
     private Date timeStamp;
     public  void method()
     {
@@ -32,13 +33,16 @@ public class OTPCheck {
     }
 
     public String getOtp() {
-        this.otp=otp;
+        this.otp = otp;
         return otp;
     }
-
-
     public String setOtp() {
         this.otp=otp;
         return otp;
     }
+    public String setName() {
+        this.Name=Name;
+        return Name;
+    }
+
 }
